@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khedme/Controllers/LoginController.dart';
+import 'package:khedme/Routes/AppRoute.dart';
 
 class Login extends GetView<LoginController> {
   const Login({super.key});
@@ -80,6 +81,12 @@ class Login extends GetView<LoginController> {
                       controller.login(); // Replace with your login logic
                     },
                     child: const Text("Login"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoute.register);
+                    },
+                    child: const Text("Register"),
                   ),
                 ],
               ),
