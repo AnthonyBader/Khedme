@@ -7,11 +7,18 @@ class LoginController extends GetxController {
   TextEditingController password = TextEditingController();
 
   void login() {
-    // Here you would typically check the email and password,
-    // maybe make a request to an API to authenticate the user
+    // Logging the email and password
     print("Email: ${email.text}, Password: ${password.text}");
 
+    // Create a User object for login
     User user = User(email: email.value.text, password: password.value.text);
-    String request_body = user.toJson();
+
+    // Convert to JSON for API request
+    Map<String, dynamic> request_body = user.toJson();
+    
+    print(request_body);  // You can see the output in console
+
+    // You can later use DioClient to make an actual API call like this:
+    // var response = await DioClient().getInstance().post('/login', data: request_body);
   }
 }

@@ -1,26 +1,19 @@
-import 'dart:convert';
-
 class User {
-  final String? name;
-  final String? email;
-  final String? phone;
-  final String? password;
+  String? name;
+  String email;
+  String phone;
+  String password;
 
-  User({
-    this.name,
-    required this.email,
-    this.phone,
-    this.password,
-  });
+  // Optional fields for login (only email and password needed)
+  User({this.name, required this.email, this.phone = '', required this.password});
 
-  Map<String, dynamic> toMap() {
+  // toJson method for both registration and login
+  Map<String, dynamic> toJson() {
     return {
-      'name': name,
+      if (name != null) 'name': name,
       'email': email,
-      'phone': phone,
+      if (phone.isNotEmpty) 'phone': phone,
       'password': password,
     };
   }
-
-  String toJson() => json.encode(toMap());
 }
