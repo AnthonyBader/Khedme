@@ -1,38 +1,56 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:khedme/Models/User.dart'; // Replace with your actual project name
-import 'package:khedme/Core/Network/DioClient.dart'; // Make sure DioClient is imported
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+
 
 class RegisterController extends GetxController {
-  TextEditingController name = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
+  final email = TextEditingController();
+  final phone = TextEditingController();
+  final address = TextEditingController();
+  final password = TextEditingController();
+  final confirmPassword = TextEditingController();
 
-  void register() async {
-    // Create a User object
-    User user = User(
-      name: name.value.text,
-      email: email.value.text,
-      phone: phone.value.text,
-      password: password.value.text,
-    );
 
-    // Convert the User object to JSON
-    Map<String, dynamic> request_body = user.toJson();
+  // Register user function
+  Future<bool> register() async {
+    const String url = 'http://localhost:8000/api/register';
 
-    // Send the POST request using Dio
     try {
-      var post = await DioClient().getInstance().post('/register', data: request_body);
-      
-      // Check if the response is successful
-      if (post.statusCode == 200) {
-        print(post.data);
+      final Map<String, dynamic> body = {
+        'first_name': firstName.text,
+        'last_name': lastName.text,
+        'email': email.text,
+        'phone': phone.text,
+        'address': address.text,
+        'password': password.text,
+        'password_confirmation': confirmPassword.text, // Added confirmation
+      };
+
+      // Make the request
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {"Content-Type": "application/json"},
+        body: json.encode(body),
+      );
+
+      // Check if registration was successful
+      if (response.statusCode == 201) {
+        final responseBody = json.decode(response.body);
+        print('Registration successful: $responseBody');
+        Get.offNamed('/login'); // Use Get.offNamed to remove the Register page from the stack
+
+        return true; // Indicate success
       } else {
-        print('Registration failed: ${post.statusCode}');
+        print('Registration failed: ${response.body}');
+        return false; // Indicate failure
       }
     } catch (e) {
-      print('Error occurred: $e');
+      print('Unexpected error: $e');
+      return false; // Indicate failure
     }
   }
 }

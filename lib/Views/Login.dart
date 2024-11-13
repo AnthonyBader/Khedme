@@ -9,90 +9,147 @@ class Login extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(
-          top: 10,
-          left: 10,
-          right: 10,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 50),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Background image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/logbackground.png'), // Background image
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Container(
+              color: Colors.black.withOpacity(0.5), // Semi-transparent overlay
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  Text(
-                    "Khedme",
-                    style: TextStyle(
-                      fontSize: 35,
-                      color: Colors.deepPurple,
-                      fontWeight: FontWeight.bold,
+                  const SizedBox(height: 30),
+                  // App logo
+                  Container(
+                    height: 250,
+                    width: 250,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/logo.png'), // Logo image
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
+                  const SizedBox(height: 30),
+                  // Email field
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Email",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white, // White color for better contrast
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: controller.email,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15), // Rounded corners
+                      ),
+                      hintText: 'Enter your email',
+                      hintStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.7), // Hint text color
+                      ),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.2), // Text field background color
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    style: const TextStyle(color: Colors.white), // Input text color
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Password field
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Password",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white, // White color for better contrast
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: controller.password,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15), // Rounded corners
+                      ),
+                      hintText: 'Enter your password',
+                      hintStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.7), // Hint text color
+                      ),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.2), // Text field background color
+                    ),
+                    obscureText: true,
+                    style: const TextStyle(color: Colors.white), // Input text color
+                  ),
+                  const SizedBox(height: 30),
+                  
+                  // Login and Register buttons
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.login(); // Replace with your login logic
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepPurple, // Button color
+                          foregroundColor: Colors.white, // Text color
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 20,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20), // Rounded button
+                          ),
+                        ),
+                        child: const Text("Login"),
+                      ),
+                      const SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          Get.toNamed(AppRoute.register); // Navigate to Register page
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue, // Button color
+                          foregroundColor: Colors.white, // Text color
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 20,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20), // Rounded button
+                          ),
+                        ),
+                        child: const Text("Register"),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-              const SizedBox(height: 30),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Email",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: controller.email,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter your email',
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              const SizedBox(height: 20),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Password",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: controller.password,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter your password',
-                ),
-                obscureText: true,
-              ),
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.login(); // Replace with your login logic
-                    },
-                    child: const Text("Login"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoute.register);
-                    },
-                    child: const Text("Register"),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
