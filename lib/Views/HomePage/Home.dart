@@ -153,8 +153,8 @@ class _HomePageState extends State<HomePage> {
         child: _showAboutUs
             ? const AboutUs()
             : _showProfile
-                ? const ProfilePage()
-                : _buildServiceGrid(),
+                ? const ProfilePage()  // Display ProfilePage here
+                : _buildServiceGrid(),  // Default grid of services
       ),
       bottomNavigationBar: CurvedNavigationBar(
         index: _selectedIndex,
