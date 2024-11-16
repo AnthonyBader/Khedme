@@ -12,11 +12,11 @@ class AboutUs extends StatelessWidget {
         children: [
           // Large image on top
           SizedBox(
-            width: double.infinity, // Make the image take the full width
+            width: double.infinity, //full width image
             child: Image.asset(
-              'assets/images/meetus.png', // Path to your image
-              fit: BoxFit.contain, // Use BoxFit.contain to show the entire image
-              height: 350, // Increase the height to show more of the image
+              'assets/images/meetus.png',
+              fit: BoxFit.contain, //show entire image
+              height: 350,
             ),
           ),
           const SizedBox(height: 16), // Space between the image and text
@@ -30,11 +30,14 @@ class AboutUs extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Text(
-            'Email: info@khedme.com\n'
-            'Phone: +961 81 035 230',
+            'Email: anthonybader2000@gmail.com\n'
+            'Email: zaccouranthony@gmail.com\n'
+            'Email: elianemsawaya@gmail.com\n'
+            'Email: Samernasr1@live.com\n'
+            'Email: nakouzisamia@gmail.com',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.black, // Changed to black for visibility
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 32),
@@ -43,19 +46,19 @@ class AboutUs extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,
-              color: Colors.black, // Changed to black for visibility
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 16),
           const Text(
-            '1. Anthony 1\n'
-            '2. Anthony 2\n'
-            '3. Eliane\n'
-            '4. Samer\n'
-            '5. Samia',
+            '1. Anthony Bader\n'
+            '2. Anthony Zakkour\n'
+            '3. Eliane Sawaya\n'
+            '4. Samer Nasr\n'
+            '5. Samia Nakouzi',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.black, // Changed to black for visibility
+              color: Colors.black,
             ),
           ),
         ],

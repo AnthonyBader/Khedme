@@ -1,4 +1,4 @@
-import 'dart:convert';
+// import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'api_service.dart';
 
@@ -10,7 +10,7 @@ class BookingService extends ApiService {
     final response = await http.post(
       url,
       headers: getHeaders(token),
-      body: jsonEncode(bookingData),
+      // body: jsonEncode(bookingData),
     );
 
     return response;

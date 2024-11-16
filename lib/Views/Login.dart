@@ -16,12 +16,12 @@ class Login extends GetView<LoginController> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/logbackground.png'), // Background image
+                image: AssetImage('assets/images/logbackground.png'), 
                 fit: BoxFit.cover,
               ),
             ),
             child: Container(
-              color: Colors.black.withOpacity(0.5), // Semi-transparent overlay
+              color: Colors.black.withOpacity(0.5), // half opacity overlay
             ),
           ),
           Padding(
@@ -120,7 +120,7 @@ class Login extends GetView<LoginController> {
                             horizontal: 20,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20), // Rounded button
+                            borderRadius: BorderRadius.circular(20), //Rounded button
                           ),
                         ),
                         child: const Text("Login"),
@@ -128,17 +128,17 @@ class Login extends GetView<LoginController> {
                       const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
-                          Get.toNamed(AppRoute.register); // Navigate to Register page
+                          Get.toNamed(AppRoute.register); //go to Register page
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue, // Button color
-                          foregroundColor: Colors.white, // Text color
+                          backgroundColor: Colors.blue, //button color
+                          foregroundColor: Colors.white, //text color
                           padding: const EdgeInsets.symmetric(
                             vertical: 15,
                             horizontal: 20,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20), // Rounded button
+                            borderRadius: BorderRadius.circular(20), //rouunded button
                           ),
                         ),
                         child: const Text("Register"),

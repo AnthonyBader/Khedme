@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
   ApiService apiService = ApiService();
   List<KhedmeWorker> workers = [];
@@ -38,8 +39,16 @@ class _HomePageState extends State<HomePage> {
   void changeTab(int index) {
     setState(() {
       _selectedIndex = index;
-      _showAboutUs = index == 1;
-      _showProfile = index == 3;
+      if (index == 1) {
+        _showAboutUs = true;
+        _showProfile = false;
+      } else if (index == 2) {
+        _showAboutUs = false;
+        _showProfile = true;
+      } else {
+        _showAboutUs = false;
+        _showProfile = false;
+      }
     });
   }
 
@@ -54,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            // Print the service name to the console for debugging
+            //this is for debuggign.
             print('Selected Service: ${services[index]['name']}');
             Get.to(() => WorkersPage(service: services[index]['name']!));
           },
@@ -152,7 +161,6 @@ class _HomePageState extends State<HomePage> {
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.info, size: 30, color: Colors.white),
-          Icon(Icons.history, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
         ],
         color: Theme.of(context).brightness == Brightness.dark

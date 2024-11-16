@@ -4,8 +4,8 @@ import 'package:khedme/Models/Worker.dart';
 import 'package:khedme/Services/api_service.dart';
 import 'package:khedme/Routes/AppRoute.dart';
 
-extension StringExtension on String {
-  String get capitalize => isNotEmpty ? '${this[0].toUpperCase()}${substring(1)}' : '';
+extension MyStringExtension on String {
+  String get myCapitalize => isNotEmpty ? '${this[0].toUpperCase()}${substring(1)}' : '';
 }
 
 class WorkersPage extends StatefulWidget {
@@ -50,17 +50,51 @@ class _WorkersPageState extends State<WorkersPage> {
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   elevation: 5,
-                  child: ListTile(
-                    title: Text('${worker.firstName} ${worker.lastName}'),
-                    subtitle: Text(
-                      'Role: ${worker.role}\nRating: ${worker.rating?.toString() ?? "Not rated"}',
-                    ),
-                    trailing: ElevatedButton(
-                      onPressed: () {
-                        // Navigate to the PaymentPage with Get.toNamed, passing the worker as an argument
-                        Get.toNamed(AppRoute.payment, arguments: worker);
-                      },
-                      child: const Text('Book Now'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${worker.firstName.myCapitalize} ${worker.lastName.myCapitalize}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          'Role: ${worker.role.myCapitalize}',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                        const SizedBox(height: 5),
+                        Row(
+                          children: [
+                            const Icon(Icons.star, color: Colors.amber, size: 20),
+                            const SizedBox(width: 5),
+                            Text(
+                              worker.rating?.toString() ?? 'Not rated',
+                              style: TextStyle(color: Colors.grey[700]),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.toNamed(AppRoute.payment, arguments: worker);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: const Text('Book Now'),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 );

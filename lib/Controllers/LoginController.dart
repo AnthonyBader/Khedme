@@ -34,9 +34,10 @@ class LoginController extends GetxController {
           final userId = data['data']['id'];
           
           // Print user_id after successful login
-          print('User ID: $userId'); // Print user ID
+          // print('User ID: $userId'); // Print user ID
           
-          await fetchUserOrders(token); // Fetch orders after login
+          // await fetchUserOrders(token); // Fetch orders after login
+          await checkUserId();
           await storeToken(token);
           await storeUserId(userId.toString());
 

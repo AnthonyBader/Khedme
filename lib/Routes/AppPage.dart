@@ -2,14 +2,14 @@ import 'package:get/get.dart';
 import 'package:khedme/Bindings/LoginBinding.dart';
 import 'package:khedme/Bindings/RegisterBinding.dart';
 import 'package:khedme/Bindings/HomeBinding.dart';
-import 'package:khedme/Bindings/SearchBinding.dart';
+// import 'package:khedme/Bindings/SearchBinding.dart';
 import 'package:khedme/Bindings/ProfileBinding.dart';
 import 'package:khedme/Bindings/PaymentBinding.dart';
 import 'package:khedme/Views/AboutUsPage.dart';
 import 'package:khedme/Views/Login.dart';
 import 'package:khedme/Views/Register.dart';
 import 'package:khedme/Views/HomePage/Home.dart';
-import 'package:khedme/Views/SearchPage.dart';
+// import 'package:khedme/Views/SearchPage.dart';
 import 'package:khedme/Views/ProfilePage.dart';
 import 'package:khedme/Routes/AppRoute.dart';
 import 'package:khedme/Views/PaymentPage.dart';
@@ -46,11 +46,11 @@ class AppPage {
       page: () => const Register(),
       binding: RegisterBinding(),
     ),
-    GetPage(
-      name: AppRoute.search,
-      page: () => const SearchPage(),
-      binding: SearchBinding(),
-    ),
+    // GetPage(
+    //   name: AppRoute.search,
+    //   page: () => const SearchPage(),
+    //   binding: SearchBinding(),
+    // ),
     GetPage(
       name: AppRoute.profile,
       page: () => const ProfilePage(),
