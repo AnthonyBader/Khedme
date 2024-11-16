@@ -38,8 +38,16 @@ class _HomePageState extends State<HomePage> {
   void changeTab(int index) {
     setState(() {
       _selectedIndex = index;
-      _showAboutUs = index == 1;
-      _showProfile = index == 3;
+      if (index == 1) {
+        _showAboutUs = true;
+        _showProfile = false;
+      } else if (index == 2) {
+        _showAboutUs = false;
+        _showProfile = true;  // Show the ProfilePage within the body
+      } else {
+        _showAboutUs = false;
+        _showProfile = false;
+      }
     });
   }
 
@@ -144,15 +152,14 @@ class _HomePageState extends State<HomePage> {
         child: _showAboutUs
             ? const AboutUs()
             : _showProfile
-                ? const ProfilePage()
-                : _buildServiceGrid(),
+                ? const ProfilePage()  // Display ProfilePage here
+                : _buildServiceGrid(),  // Default grid of services
       ),
       bottomNavigationBar: CurvedNavigationBar(
         index: _selectedIndex,
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.info, size: 30, color: Colors.white),
-          Icon(Icons.history, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
         ],
         color: Theme.of(context).brightness == Brightness.dark

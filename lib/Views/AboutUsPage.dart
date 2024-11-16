@@ -30,8 +30,11 @@ class AboutUs extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Text(
-            'Email: info@khedme.com\n'
-            'Phone: +961 81 035 230',
+            'Email: anthonybader2000@gmail.com\n'
+            'Email: zaccouranthony@gmail.com\n'
+            'Email: elianemsawaya@gmail.com\n'
+            'Email: Samernasr1@live.com\n'
+            'Email: nakouzisamia@gmail.com',
             style: TextStyle(
               fontSize: 18,
               color: Colors.black, // Changed to black for visibility
@@ -48,11 +51,11 @@ class AboutUs extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Text(
-            '1. Anthony 1\n'
-            '2. Anthony 2\n'
-            '3. Eliane\n'
-            '4. Samer\n'
-            '5. Samia',
+            '1. Anthony Bader\n'
+            '2. Anthony Zakkour\n'
+            '3. Eliane Sawaya\n'
+            '4. Samer Nasr\n'
+            '5. Samia Nakouzi',
             style: TextStyle(
               fontSize: 18,
               color: Colors.black, // Changed to black for visibility
